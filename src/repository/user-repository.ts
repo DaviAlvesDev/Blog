@@ -7,6 +7,11 @@ export async function findUser(id: number): Promise<User | undefined> {
     return result.rows[0]
 }
 
+export async function findAllUsers(): Promise<User[]> {
+    const result = await pool.query('SELECT * FROM users;')
+    return result.rows
+}
+
 export async function createUser(data: CreateUserDTO): Promise<User | undefined> {
     const query = `
         INSERT INTO users (email, password, role) 
