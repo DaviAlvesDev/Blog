@@ -4,7 +4,7 @@ import { AppError } from "../errors/app-error.js"
 export function globalError(err: any, req: Request, res: Response, next: NextFunction) {
     if (err instanceof AppError) {
         if (err.statusCode === 500) {
-            console.error(`[${req.method}] ${req.url} - Error: ${err.internalLog}`)
+            console.error(`[${req.method}] ${req.url} - Error: ${err}`)
             if (err.stack) console.error(err.stack)
         }
 
