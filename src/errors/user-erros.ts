@@ -53,3 +53,21 @@ export class LoginError extends AppError {
         super('Either email or password is invalid', 401)
     }
 }
+
+export class UserNotLoggedError extends AppError {
+    constructor() {
+        super('The user needs to be logged in to pass', 401)
+    }
+}
+
+export class InvalidTokenError extends AppError {
+    constructor() {
+        super('The token is invalid or was not sended', 401)
+    }
+}
+
+export class UnauthorizedUserError extends AppError {
+    constructor() {
+        super('You cannot access this route', 403)
+    }
+}
