@@ -47,3 +47,9 @@ export class InvalidUpdateUserDataError extends AppError {
         super('Please send either "email" or "password" to update the user data', 400)
     }
 }
+
+export class LoginError extends AppError {
+    constructor() {
+        super('Either email or password is invalid', 401)
+    }
+}

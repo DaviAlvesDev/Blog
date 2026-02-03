@@ -11,3 +11,9 @@ export interface CreateUserDTO {
     password: string,
     role: string,
 }
+
+export interface LoggedUser {
+    user: Pick<User, 'id' | 'email' | 'created_at'>
+    access_token: string,
+    refresh_token: string
+}
