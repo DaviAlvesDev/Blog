@@ -12,7 +12,7 @@ export async function searchUsers(id: number = 0): Promise<User[] | User> {
         return users
     }
 
-    const user = await userRepository.findUser(id)
+    const user = await userRepository.findUserByID(id)
     if (!user) throw new UserNotFoundError()
     return user
 }
@@ -33,7 +33,7 @@ export async function registerNewUser(email: string, password: string): Promise<
 }
 
 export async function updateUserData(id: number, { email = '', password = '' }): Promise<User> {
-    const user = await userRepository.findUser(id)
+    const user = await userRepository.findUserByID(id)
     if (!user) throw new UserNotFoundError()
 
     if (email && !validateEmail(email)) {
@@ -56,7 +56,7 @@ export async function updateUserData(id: number, { email = '', password = '' }):
 }
 
 export async function deleteUserData(id: number): Promise<User> {
-    const user = await userRepository.findUser(id)
+    const user = await userRepository.findUserByID(id)
     if (!user) throw new UserNotFoundError()
 
     const deletedUser = await userRepository.deleteUser(id)

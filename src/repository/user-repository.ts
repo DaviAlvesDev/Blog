@@ -1,9 +1,15 @@
 import { pool } from "../db/index.js"
 import type { User, CreateUserDTO } from "../types/user-interface.js"
 
-export async function findUser(id: number): Promise<User | undefined> {
+export async function findUserByID(id: number): Promise<User | undefined> {
     const query = 'SELECT * FROM users WHERE id = $1;'
     const result = await pool.query(query, [id])
+    return result.rows[0]
+}
+
+export async function findUserByEmail(email: string): Promise<User | undefined> {
+    const query = 'SELECT * FROM users WHERE email = $1;'
+    const result = await pool.query(query, [email])
     return result.rows[0]
 }
 
