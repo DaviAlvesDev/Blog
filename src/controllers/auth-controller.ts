@@ -1,4 +1,4 @@
-import { InvalidTokenError, LoginError } from '../errors/user-erros.js'
+import { InvalidTokenError, LoginError } from '../errors/user-errors.js'
 import * as authServices from '../services/auth-services.js'
 import type { Request, Response } from 'express'
 

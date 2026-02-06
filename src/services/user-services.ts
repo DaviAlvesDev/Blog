@@ -2,7 +2,7 @@ import * as userRepository from '../repository/user-repository.js'
 import bcrypt from 'bcrypt'
 import 'dotenv/config'
 import type { CreateUserDTO, User } from '../types/user-interface.js'
-import { CreateUserError, DeleteUserError, InvalidEmailError, UpdateUserError, UserNotFoundError } from '../errors/user-erros.js'
+import { CreateUserError, DeleteUserError, InvalidEmailError, UpdateUserError, UserNotFoundError } from '../errors/user-errors.js'
 import validateEmail from '../utils/validate-email.js'
 
 export async function searchUsers(id: number = 0): Promise<User[] | User> {

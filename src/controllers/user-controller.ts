@@ -1,4 +1,4 @@
-import { InvalidNewUserDataError, InvalidUpdateUserDataError, InvalidUserIDError, LoginError, UserNotFoundError } from '../errors/user-erros.js'
+import { InvalidNewUserDataError, InvalidUpdateUserDataError, InvalidUserIDError, LoginError, UserNotFoundError } from '../errors/user-errors.js'
 import * as userServices from '../services/user-services.js'
 import type { Request, Response } from 'express'
 

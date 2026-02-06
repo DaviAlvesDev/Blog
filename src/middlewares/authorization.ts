@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction, RequestHandler } from "express"
-import { UnauthorizedUserError, UserNotLoggedError } from "../errors/user-erros.js"
+import { UnauthorizedUserError, UserNotLoggedError } from "../errors/user-errors.js"
 
 export function authorize(allowedRoles = ['admin']): RequestHandler {
     return (req: Request, res: Response, next: NextFunction) => {

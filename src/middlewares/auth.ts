@@ -1,5 +1,5 @@
 import type { Request, Response, NextFunction } from "express"
-import { InvalidTokenError } from "../errors/user-erros.js"
+import { InvalidTokenError } from "../errors/user-errors.js"
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 

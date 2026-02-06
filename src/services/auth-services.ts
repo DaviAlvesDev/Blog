@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt'
 import * as userRepository from '../repository/user-repository.js'
 import type { LoggedUser } from '../types/user-interface.js'
 import validateEmail from '../utils/validate-email.js'
-import { InvalidTokenError, LoginError, UserNotFoundError } from '../errors/user-erros.js'
+import { InvalidTokenError, LoginError, UserNotFoundError } from '../errors/user-errors.js'
 import jwt from 'jsonwebtoken'
 import 'dotenv/config'
 
