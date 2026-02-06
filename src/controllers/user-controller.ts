@@ -1,4 +1,4 @@
-import { InvalidNewUserDataError, InvalidUpdateUserDataError, InvalidUserIDError, LoginError, UserNotFoundError } from '../errors/user-errors.js'
+import { InvalidNewUserDataError, InvalidUpdateUserDataError, InvalidUserIDError, LoginError, UnauthorizedUserError, UserNotFoundError, UserNotLoggedError } from '../errors/user-errors.js'
 import * as userServices from '../services/user-services.js'
 import type { Request, Response } from 'express'
 
@@ -69,3 +69,44 @@ export async function deleteUser(req: Request, res: Response) {
     })
 }
 
+export async function getProfile(req: Request, res: Response) {
+    const userID = Number(req.headers['x-user-id'])
+    if (!userID) throw new UserNotLoggedError()
+
+    const user = await userServices.searchUsers(userID)
+
+    res.json({
+        ok: true,
+        data: user
+    })
+}
+
+export async function patchProfile(req: Request, res: Response) {
+    const userID = Number(req.headers['x-user-id'])
+    if (!userID) throw new UserNotLoggedError()
+
+    const { email, password } = req.body
+    if (!email && !password) throw new InvalidUpdateUserDataError()
+
+    const newData = {
+        email,
+        password
+    }
+
+    const updatedUser = await userServices.updateUserData(userID, newData)
+    res.json({
+        ok: true,
+        data: updatedUser
+    })
+}
+
+export async function deleteProfile(req: Request, res: Response) {
+    const userID = Number(req.headers['x-user-id'])
+    if (!userID) throw new UserNotLoggedError()
+
+    const deletedUser = await userServices.deleteUserData(userID)
+    res.json({
+        ok: true,
+        data: deletedUser
+    })
+}
