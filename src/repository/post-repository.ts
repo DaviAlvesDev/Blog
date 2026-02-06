@@ -33,7 +33,7 @@ export async function createPost(data: CreatePostDTO): Promise<Post | undefined>
 export async function updatePost(id: number, content: string): Promise<Post | undefined> {
     const query = `
     UPDATE posts
-    SET content = $1
+    SET content = $1, updated_at = NOW()
     WHERE id = $2
     RETURNING *;
     `
